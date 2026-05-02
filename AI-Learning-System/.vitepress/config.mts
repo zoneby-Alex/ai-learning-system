@@ -95,19 +95,19 @@ const sidebar = {
       text: '基础原理',
       collapsed: false,
       items: [
-        { text: 'BP反向传播', link: '/3-深度学习核心/BP反向传播/README' },
+        { text: 'BP反向传播', link: '/3-深度学习核心/BP反向传播/' },
         { text: '自动微分', link: '/3-深度学习核心/BP反向传播/知识点-自动微分' },
-        { text: '激活函数', link: '/3-深度学习核心/激活函数/README' },
+        { text: '激活函数', link: '/3-深度学习核心/激活函数/' },
         { text: '初始化策略', link: '/3-深度学习核心/初始化/知识点-初始化策略' },
-        { text: '正则化', link: '/3-深度学习核心/正则化/README' },
+        { text: '正则化', link: '/3-深度学习核心/正则化/' },
       ]
     },
     {
       text: 'CNN / RNN',
       collapsed: true,
       items: [
-        { text: 'CNN家族', link: '/3-深度学习核心/CNN家族/README' },
-        { text: 'RNN家族', link: '/3-深度学习核心/RNN家族/README' },
+        { text: 'CNN家族', link: '/3-深度学习核心/CNN家族/' },
+        { text: 'RNN家族', link: '/3-深度学习核心/RNN家族/' },
       ]
     },
     {
@@ -115,14 +115,14 @@ const sidebar = {
       collapsed: true,
       items: [
         { text: 'Self-Attention', link: '/3-深度学习核心/Transformer/知识点-Self-Attention' },
-        { text: 'ViT多模态', link: '/3-深度学习核心/ViT多模态/README' },
+        { text: 'ViT多模态', link: '/3-深度学习核心/ViT多模态/' },
       ]
     },
     {
       text: '进阶主题',
       collapsed: true,
       items: [
-        { text: 'Diffusion', link: '/3-深度学习核心/Diffusion/README' },
+        { text: 'Diffusion', link: '/3-深度学习核心/Diffusion/' },
         { text: 'MoE架构', link: '/3-深度学习核心/MoE/知识点-MoE架构' },
         { text: 'LoRA微调', link: '/3-深度学习核心/LoRA/知识点-LoRA微调' },
         { text: 'RLHF与DPO', link: '/3-深度学习核心/训练技术/知识点-RLHF与DPO' },
@@ -160,11 +160,11 @@ const sidebar = {
   ],
   '/5-前沿方向/': [
     { text: '前沿方向总览', link: '/5-前沿方向/' },
-    { text: 'AI Agent', link: '/5-前沿方向/AI-Agent/README' },
+    { text: 'AI Agent', link: '/5-前沿方向/AI-Agent/' },
     { text: 'AI Infra / 推理优化', link: '/5-前沿方向/AI-Infra/知识点-推理优化' },
-    { text: '多模态', link: '/5-前沿方向/多模态/README' },
-    { text: 'AI Coding', link: '/5-前沿方向/AI-Coding/README' },
-    { text: '长上下文', link: '/5-前沿方向/长上下文/README' },
+    { text: '多模态', link: '/5-前沿方向/多模态/' },
+    { text: 'AI Coding', link: '/5-前沿方向/AI-Coding/' },
+    { text: '长上下文', link: '/5-前沿方向/长上下文/' },
     { text: 'AI4Science', link: '/5-前沿方向/AI4Science/知识点-AI4Science应用' },
     { text: '具身智能', link: '/5-前沿方向/Embodied-AI/知识点-具身智能' },
   ],
