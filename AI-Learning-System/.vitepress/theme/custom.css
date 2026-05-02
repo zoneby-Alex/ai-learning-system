@@ -1,0 +1,5 @@
+/* 修复主标题换行问题 */
+.VPHero .name.clip {
+  max-width: none !important;
+  width: auto !important;
+}
