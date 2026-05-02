@@ -1,0 +1,14 @@
+{
+  "name": "ai-learning-system",
+  "version": "2.0.0",
+  "description": "AI深度学习完整学习体系 - 从数学基础到LLM就业 | VitePress文档站",
+  "scripts": {
+    "docs:dev": "vitepress dev AI-Learning-System",
+    "docs:build": "vitepress build AI-Learning-System",
+    "docs:preview": "vitepress preview AI-Learning-System"
+  },
+  "devDependencies": {
+    "markdown-it-mathjax3": "^4.3.2",
+    "vitepress": "^1.6.4"
+  }
+}

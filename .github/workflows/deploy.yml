@@ -1,0 +1,78 @@
+# ============================================================
+# GitHub Actions 自动部署工作流
+# 触发条件：推送到 main 分支时自动构建并部署到 GitHub Pages
+# 部署地址：https://zoneby-Alex.github.io/ai-learning-system/
+# ============================================================
+
+name: Deploy to GitHub Pages
+
+on:
+  # 【触发条件1】当代码推送到 main 分支时自动执行
+  push:
+    branches:
+      - main
+
+  # 【触发条件2】允许在 GitHub 网页上手动触发部署
+  # 在仓库页面点击 Actions → Deploy to GitHub Pages → Run workflow
+  workflow_dispatch:
+
+# ============================================================
+# 工作流中所有作业(job)的定义
+# ============================================================
+jobs:
+  # ---- 第1步：构建站点 ----
+  build:
+    # 使用最新的 Ubuntu 虚拟环境（免费）
+    runs-on: ubuntu-latest
+
+    # 构建步骤
+    steps:
+      # [步骤1.1] 拉取仓库代码到虚拟环境中
+      - name: 拉取代码
+        uses: actions/checkout@v4
+
+      # [步骤1.2] 安装 Node.js 运行环境
+      - name: 安装 Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20        # Node.js 版本（LTS 长期支持版）
+          cache: 'npm'            # 启用 npm 缓存，加速后续构建
+
+      # [步骤1.3] 安装项目依赖（vitepress + markdown-it-mathjax3）
+      - name: 安装依赖
+        run: npm ci               # ci = clean install，比 npm install 更快更可靠
+
+      # [步骤1.4] 执行 VitePress 构建，生成静态文件到 dist/ 目录
+      - name: 构建 VitePress 站点
+        run: npm run docs:build   # 等价于 npx vitepress build AI-Learning-System
+
+      # [步骤1.5] 将构建产物 dist/ 上传为工作流产物
+      # 这样下一步的 deploy job 可以直接下载使用
+      - name: 上传构建产物
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: ./dist            # VitePress 配置中 outDir: '../dist' 的输出位置
+
+  # ---- 第2步：部署到 GitHub Pages ----
+  deploy:
+    # 只有 build 成功后才执行 deploy（防止半成品上线）
+    needs: build
+
+    # 权限设置：允许写入 GitHub Pages
+    permissions:
+      pages: write               # 允许部署到 Pages
+      id-token: write            # 允许 OIDC 身份认证
+
+    # 部署环境：GitHub Pages（在仓库 Settings 中配置）
+    environment:
+      name: github-pages
+      # 部署后自动生成的 URL 格式
+      url: ${{ steps.deployment.outputs.page_url }}
+
+    # 使用 GitHub 官方的最新 Ubuntu 环境
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: 部署到 GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4  # GitHub 官方部署 Action
