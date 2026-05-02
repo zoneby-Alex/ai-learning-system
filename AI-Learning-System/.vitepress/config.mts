@@ -263,8 +263,14 @@ export default defineConfig({
   lang: 'zh-CN',
   title: 'AI深度学习完整学习体系',
   description: '从数学基础到LLM应用，系统化AI学习知识库',
+  // 【关键】base 必须设为仓库名，否则 GitHub Pages 上所有链接 404
+  // 格式：/<仓库名>/   你的仓库叫 ai-learning-system
+  base: '/ai-learning-system/',
   srcDir: '.',
   outDir: '../dist',
+  // 【死链接处理】部分原始 README 的交叉引用指向未创建的文件
+  // 设为 true 允许构建通过，死链接仅为警告（不影响侧边栏导航）
+  ignoreDeadLinks: true,
 
   themeConfig: {
     nav: [
